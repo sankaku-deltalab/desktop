@@ -6,12 +6,7 @@ defmodule Desktop.Endpoint do
       defoverridable url: 0
 
       def url do
-        url =
-          Phoenix.Config.cache(
-            __MODULE__,
-            :__phoenix_url__,
-            &Phoenix.Endpoint.Supervisor.url/1
-          )
+        url = :persistent_term.get({Phoenix.Endpoint, __MODULE__}, nil).url
 
         endpoint = Module.safe_concat(__MODULE__, HTTP)
         String.replace(url, ":0", ":#{:ranch.get_port(endpoint)}")
