@@ -6,7 +6,8 @@ defmodule Desktop.Wx do
     ID_ANY ID_EXIT DEFAULT_FRAME_STYLE NO_BORDER EXPAND HORIZONTAL
     ITEM_SEPARATOR ITEM_NORMAL ITEM_CHECK ITEM_RADIO
     ICON_WARNING ICON_ERROR ICON_QUESTION ICON_INFORMATION
-    MAJOR_VERSION MINOR_VERSION RELEASE_NUMBER IMAGE_QUALITY_HIGH )
+    MAJOR_VERSION MINOR_VERSION RELEASE_NUMBER IMAGE_QUALITY_HIGH
+    MAXIMIZE )
 
   gets =
     Enum.sort(@constants)
@@ -19,7 +20,7 @@ defmodule Desktop.Wx do
       -module(desktop_wx).
       -include_lib("wx/include/wx.hrl").
       -export([get/1]).
-
+    
       #{gets}.
     """
   )
